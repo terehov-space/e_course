@@ -10019,3 +10019,7 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.header_link {
+  color: #FFFFFF !important;
+  margin: 0 10px 0 10px;
+}
