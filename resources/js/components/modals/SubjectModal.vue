@@ -18,6 +18,17 @@
                         label="Название"
                         required
                     />
+
+                    <v-select
+                        label="Преподаватель"
+                        v-model="model.teacher_id"
+                        item-value="id"
+                        item-text="first_name"
+                        :items="options"
+                        required
+                    >
+
+                    </v-select>
                 </v-form>
             </v-card-text>
 
@@ -50,11 +61,15 @@ import axios from "axios";
 
 export default {
     name: 'CafedraModal',
+    props: {
+        options: [],
+    },
     data: () => ({
         show: false,
         model: {
             id: -1,
             title: '',
+            teacher_id: '',
         },
     }),
     methods: {

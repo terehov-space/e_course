@@ -7,10 +7,11 @@
             class="elevation-1"
             @click:row="openModal"
         ></v-data-table>
-        <teacher-modal ref="teacher"/>
-        <group-modal ref="group"/>
-        <subject-modal ref="subject"/>
+        <teacher-modal v-if="data.cafedras" :options="data.cafedras" ref="teacher"/>
+        <group-modal v-if="data.cafedras" :options="data.cafedras" ref="group"/>
+        <subject-modal v-if="data.teachers" :options="data.teachers" ref="subject"/>
         <cafedra-modal ref="cafedra"/>
+        <schedule-modal v-if="data.groups && data.subjects" :subjects="data.subjects" :groups="data.groups" ref="schedule"/>
     </div>
 </template>
 
@@ -19,10 +20,12 @@ import TeacherModal from './modals/TeacherModal';
 import GroupModal from './modals/GroupModal';
 import SubjectModal from './modals/SubjectModal';
 import CafedraModal from './modals/CafedraModal';
+import ScheduleModal from "./modals/ScheduleModal";
 
 export default {
     name: 'ItemsIterator',
     components: {
+        ScheduleModal,
         TeacherModal,
         GroupModal,
         SubjectModal,

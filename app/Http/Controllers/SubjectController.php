@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +26,7 @@ class SubjectController extends Controller
             'items' => $items,
             'headers' => $headers,
             'type' => 'subject',
+            'teachers' => Teacher::get(),
         ];
 
         return view('groups', compact('response'));

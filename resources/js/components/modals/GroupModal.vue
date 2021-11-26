@@ -23,6 +23,17 @@
                         label="Код"
                         required
                     />
+
+                    <v-select
+                        label="Кафедра"
+                        v-model="model.cafedra_id"
+                        item-value="id"
+                        item-text="title"
+                        :items="options"
+                        required
+                    >
+
+                    </v-select>
                 </v-form>
             </v-card-text>
 
@@ -55,12 +66,16 @@ import axios from "axios";
 
 export default {
     name: 'GroupModal',
+    props: {
+        options: [],
+    },
     data: () => ({
         show: false,
         model: {
             id: -1,
             title: '',
             code: '',
+            cafedra_id: '',
         },
     }),
     methods: {

@@ -40,6 +40,17 @@
                         label="Телефон"
                         required
                     ></v-text-field>
+
+                    <v-select
+                        label="Кафедра"
+                        v-model="model.cafedra_id"
+                        item-value="id"
+                        item-text="title"
+                        :items="options"
+                        required
+                    >
+
+                    </v-select>
                 </v-form>
             </v-card-text>
 
@@ -72,6 +83,9 @@ import axios from 'axios';
 
 export default {
     name: 'TeacherModal',
+    props: {
+        options: [],
+    },
     data: () => ({
         show: false,
         model: {
@@ -81,12 +95,23 @@ export default {
             last_name: '',
             phone: '',
             email: '',
+            cafedra_id: '',
         },
     }),
     methods: {
         openModal(data) {
             if (data.id) {
                 this.model = data;
+            } else {
+                this.model = {
+                    id: -1,
+                    first_name: '',
+                    middle_name: '',
+                    last_name: '',
+                    phone: '',
+                    email: '',
+                    cafedra_id: '',
+                };
             }
             this.show = true;
         },

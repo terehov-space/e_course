@@ -40,15 +40,12 @@ class ScheduleController extends Controller
             ],
         ];
 
-        $groups = Group::get();
-        $subjects = Subject::get();
-
         $response = [
             'items' => $items,
             'headers' => $headers,
             'type' => 'schedule',
-            'subjects' => $subjects,
-            'groups' => $groups,
+            'subjects' => Subject::get(),
+            'groups' => Group::get(),
         ];
 
         return view('schedules', compact('response'));
@@ -57,10 +54,11 @@ class ScheduleController extends Controller
     public function create(Request $request)
     {
         $params = $request->post();
-        $title = $params['title'];
-        $code = $params['code'];
-        $cafedra_id = 1;
-        $sql = "INSERT INTO `groups` (`title`, `code`, `cafedra_id`) VALUES ('$title', '$code', $cafedra_id)";
+        $weekday = $params['weekday'];
+        $time = $params['time'];
+        $group = $params['group_id'];
+        $subject = $params['subject_id'];
+        $sql = "INSERT INTO `schedules` (`weekday`, `time`, `group_id`, `subject_id`) VALUES ('$weekday', '$time', $group, $subject)";
 
         DB::insert($sql);
     }
@@ -71,14 +69,14 @@ class ScheduleController extends Controller
         $title = $params['title'];
         $code = $params['code'];
         $cafedra_id = 1;
-        $sql = "UPDATE `groups` SET `title` = '$title', `code` = '$code', `cafedra_id` = '$cafedra_id, `cafedra_id` = $cafedra_id WHERE id = $id";
+        $sql = "UPDATE `schedules` SET `title` = '$title', `code` = '$code', `cafedra_id` = '$cafedra_id, `cafedra_id` = $cafedra_id WHERE id = $id";
 
         DB::update($sql);
     }
 
     public function delete(Request $request, $id)
     {
-        $sql = "DELETE FROM `groups` WHERE `id` = $id";
+        $sql = "DELETE FROM `schedules` WHERE `id` = $id";
 
         DB::delete($sql);
     }

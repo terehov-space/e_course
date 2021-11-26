@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cafedra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,6 +42,7 @@ class TeacherController extends Controller
             'items' => $items,
             'headers' => $headers,
             'type' => 'teacher',
+            'cafedras' => Cafedra::get(),
         ];
 
         return view('groups', compact('response'));
@@ -54,7 +56,7 @@ class TeacherController extends Controller
         $middle_name = $params['middle_name'];
         $phone = $params['phone'];
         $email = $params['email'];
-        $cafedra_id = 1;
+        $cafedra_id = $params['cafedra_id'];
         $sql = "INSERT INTO `teachers` (`first_name`, `last_name`, `middle_name`, `phone`, `email`, `cafedra_id`) VALUES ('$fist_name', '$last_name', '$middle_name', '$phone', '$email', $cafedra_id)";
 
         DB::insert($sql);
