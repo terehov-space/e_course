@@ -12,7 +12,7 @@ class ScheduleController extends Controller
 {
     public function index(Request $request)
     {
-        $items = DB::select('SELECT sh.id, s.title AS subject, CONCAT(t.first_name, t.last_name) AS teacher, g.title AS `group`, sh.weekday as `day`, `sh`.`time` AS `time` FROM schedules AS sh INNER JOIN subjects AS s ON s.id = sh.subject_id INNER JOIN teachers AS t ON t.id = s.teacher_id INNER JOIN `groups` AS g ON g.id = sh.group_id INNER JOIN cafedras AS c ON c.id = t.cafedra_id');
+        $items = DB::select('SELECT * FROM final_schedule');
         $headers = [
             [
                 'text' => '№',
