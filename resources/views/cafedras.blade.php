@@ -26,6 +26,7 @@
                 <a href="/subjects" class="header_link">Предметы</a>
                 <a href="/groups" class="header_link">Группы</a>
                 <a href="/schedules" class="header_link">Расписание</a>
+                <a href="/query" class="header_link">Запросы</a>
             </div>
         </v-app-bar>
         <v-main>

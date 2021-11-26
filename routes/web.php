@@ -47,3 +47,14 @@ Route::group(['prefix' => 'schedules'], function () {
    Route::put('/{id}', [\App\Http\Controllers\ScheduleController::class, 'update']);
    Route::delete('/{id}', [\App\Http\Controllers\ScheduleController::class, 'delete']);
 });
+
+Route::group(['prefix' => 'query'], function () {
+    Route::get('/', [\App\Http\Controllers\QueryController::class, 'page']);
+    Route::get('casee', [\App\Http\Controllers\QueryController::class, 'casee']);
+    Route::get('cor', [\App\Http\Controllers\QueryController::class, 'cor']);
+    Route::get('uncor', [\App\Http\Controllers\QueryController::class, 'uncor']);
+    Route::get('select', [\App\Http\Controllers\QueryController::class, 'select']);
+    Route::get('from', [\App\Http\Controllers\QueryController::class, 'from']);
+    Route::get('having', [\App\Http\Controllers\QueryController::class, 'having']);
+    Route::get('any', [\App\Http\Controllers\QueryController::class, 'any']);
+});
