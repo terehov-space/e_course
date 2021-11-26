@@ -32,7 +32,7 @@ class ScheduleController extends Controller
             ],
             [
                 'text' => 'День',
-                'value' => 'day',
+                'value' => 'weekday',
             ],
             [
                 'text' => 'Время',
